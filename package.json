@@ -1,0 +1,39 @@
+{
+  "name": "tcc_cardapio_automatizado_g4",
+  "version": "1.0.0",
+  "description": "TCC para o Eco Thermas, na criação de um ca´rdpio automatizado para faciclitar os pedidos.",
+  "main": "index.js",
+  "scripts": {
+    "start":"node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barbsrebechi/tcc_cardapio_automatizado_g4.git"
+  },
+  "keywords": [
+    "cardápio",
+    "Automatização",
+    "TCC",
+    "Pedidos",
+    "Eco Thermas",
+    "Bebidas",
+    "Comidas"
+  ],
+  "author": "Ana Julia Mendes - Bárbara Rebechi - Felipe Sizlio - Marielle Melo -  Nathalia Giannini",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/barbsrebechi/tcc_cardapio_automatizado_g4/issues"
+  },
+  "homepage": "https://github.com/barbsrebechi/tcc_cardapio_automatizado_g4#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.0"
+   
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
