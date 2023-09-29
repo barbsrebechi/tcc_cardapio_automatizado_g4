@@ -1,36 +1,35 @@
 const { json } = require('express'); 
 const db = require('../database/connection'); 
 
-
 module.exports = {
-    async listarUsuarios(request, response) {
+    async listarPontosVendaItem(request, response) {
         try {
-            return response.status(200).json({confirma: 'Listar Usuarios'});
+            return response.status(200).json({confirma: 'Listar PontosVendaItem'});
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
     }, 
   
-    async cadatrarUsuarios(request, response) {
+    async cadatrarPontosVendaItem(request, response) {
         try {
-            return response.status(200).json({confirma: 'Cadastrar Usuarios'});
+            return response.status(200).json({confirma: 'Cadastrar PontosVendaItem'});
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
     }, 
 
 
-    async editarUsuarios(request, response) {
+    async editarPontosVendaItem(request, response) {
         try {
-            return response.status(200).json({confirma: 'EditarUsuarios'});
+            return response.status(200).json({confirma: 'Editar PontosVendaItem'});
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
     }, 
   
-    async apagarUsuarios(request, response) {
+    async apagarPontosVendaItem(request, response) {
         try {
-            return response.status(200).json({confirma: 'Apagar Usuarios'});
+            return response.status(200).json({confirma: 'Apagar PontosVendaItem'});
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
