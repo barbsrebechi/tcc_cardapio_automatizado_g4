@@ -1,10 +1,16 @@
 const { json } = require('express'); 
 const db = require('../database/connection'); 
 
-
 module.exports = {
     async listarPedidosItens(request, response) {
         try {
+const sql= 'SELECT pdit_id, ped_id, itn_id pdit_qtd, pdit_vlr_unit FROM PEDIDO_ITENS;';
+
+const PedidosItens = await db.query(sql);
+
+return response.status(200).json({confirma: PedidosItens [0]});
+
+return
             return response.status(200).json({confirma: 'Listar PedidosItens'});
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
