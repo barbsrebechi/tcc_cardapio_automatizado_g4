@@ -6,8 +6,16 @@ module.exports = {
         try {
             const sql ='SELECT rec_id, usu_id, rec_descricao, rec_valor, rec_data, ped_id FROM RECARGAS;';
             const recargas = await db.query(sql);
-            return response.status(200).json({confirma: recargas[0]});
-        } catch (error) {
+            const nReg = recargas[0].lenght;
+            return response.status(200).json(
+                {
+                    confirma: 'Sucesso', 
+                    message: 'Cadastro de usuário efetuado.',
+                    nItens: nReg, 
+                    itens: recargas[0]
+            }
+             );
+} catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
     }, 
