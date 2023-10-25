@@ -7,11 +7,17 @@ module.exports = {
 const sql= 'SELECT pdit_id, ped_id, itn_id pdit_qtd, pdit_vlr_unit FROM PEDIDO_ITENS;';
 
 const PedidosItens = await db.query(sql);
+ 
+const nReg = usuarios [0].length;
 
-return response.status(200).json({confirma: PedidosItens [0]});
-
-return
-            return response.status(200).json({confirma: 'Listar PedidosItens'});
+            return response.status(200).json(
+                {
+                    confirma: 'Sucesso',
+                    message: 'Usuários cadastrados',
+                    nItens: nReg,
+                    itens: PedidosItens [0]
+                }
+                );
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
