@@ -6,7 +6,15 @@ module.exports = {
         try {
             const sql = 'SELECT pvd_id, pvd_nome, pvd_descricao, pvd_foto FROM  PONTOS_VENDA;';
             const pontosVenda = await db.query(sql);
-            return response.status(200).json({confirma: pontosVenda[0]});
+            const nReg = pontosVenda[0].length;
+            return response.status(200).json(
+                {
+                    confirma: 'Sucesso',
+                    message: 'Usuarios cadastrados',
+                    nItens : nReg, 
+                    itens: pontosVenda[0]
+                }
+                );
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
