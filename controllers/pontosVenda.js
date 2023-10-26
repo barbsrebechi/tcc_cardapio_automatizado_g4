@@ -24,13 +24,13 @@ module.exports = {
         try {
             const {pvd_nome, pvd_descricao, pvd_foto } = request.body;
             const sql = 'INSERT INTO PONTOS_VENDA (pvd_nome, pvd_descricao, pvd_foto ) VALUES (?, ?,?);';
-            const values= [pvd_id, pvd_nome, pvd_descricao, pvd_foto];
+            const values= [ pvd_nome, pvd_descricao, pvd_foto];
             const confirmacao =  await db.query (sql,values);
             const pontoVenda_id= confirmacao [0].insertId;
             return response.status(200).json(
                 {
                     confirma:'Sucesso', 
-                    message: 'Cadastrar PontosVenda',
+                    message: 'Cadastro de Pontos de Venda efetuado',
                     pontoVenda_id
                     
                 }
@@ -43,6 +43,11 @@ module.exports = {
 
     async editarPontosVenda(request, response) {
         try {
+            const {}=request.body;
+            const{}=request.params;
+            const sql= '';
+            const values= [];
+            const atualizacao = await db.query (sql, values);
             return response.status(200).json({confirma: 'Editar PontosVenda'});
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});

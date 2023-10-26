@@ -22,9 +22,9 @@ module.exports = {
   
     async cadatrarPontosVendaItem(request, response) {
         try {
-            const {pvd_id, itn_id } = request.body;
+            const {pvd_id, itn_id, pvd_preco_item } = request.body;
             const sql = 'INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (?, ?, ?);';
-            const values= [pvd_id, itn_id ];
+            const values= [pvd_id, itn_id, pvd_preco_item ];
             const confirmacao =  await db.query (sql,values);
             const pvi_id= confirmacao [0].insertId;
             return response.status(200).json(
