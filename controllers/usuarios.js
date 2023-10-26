@@ -7,9 +7,11 @@ module.exports = {
         try {
             const sql = 'SELECT usu_id, usu_nome, usu_cpf, usu_cod_cartao FROM USUARIOS;';
             const usuarios = await db.query(sql);
+            
             const nReg = usuarios[0].length;
             return response.status(200).json({ 
                 confirma: 'Sucesso', 
+                menssage: 'Usuario cadastrado',
                 'nItens': nReg, 
                 'itens': usuarios[0] 
             });
@@ -21,7 +23,18 @@ module.exports = {
 
     async cadatrarUsuarios(request, response) {
         try {
-            return response.status(200).json({ confirma: 'Cadastrar Usuarios' });
+            const {usu_nome, usu_cpf, usu_cod_cartao, usu_dt_cadastro, usu_dt_cartao, usu_vip} = request.body;
+            const sql = 'INSERT INTO USUARIOS ( usu_nome, usu_cpf, usu_cod_cartao, usu_dt_cadastro, usu_dt_cartao, usu_vip) VALUES (?,?,?,?,?);';
+            const values = [usu_nome, usu_cpf, usu_cod_cartao, usu_dt_cadastro, usu_dt_cartao, usu_vip];
+            const confirmacao = await db.query(sql, values);
+            const usu_id = confirmacao[0].insertld;
+
+            return response.status(200).json({ 
+                confirma: 'Sucesso',
+                menssage: 'Cadastro de Usuário efetuado.',
+                usu_id
+           });
+
         } catch (error) {
             return response.status(500).json({ confirma: 'Erro', message: error });
         }
