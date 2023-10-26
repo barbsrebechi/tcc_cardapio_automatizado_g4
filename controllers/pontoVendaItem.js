@@ -22,7 +22,18 @@ module.exports = {
   
     async cadatrarPontosVendaItem(request, response) {
         try {
-            return response.status(200).json({confirma: 'Cadastrar PontosVendaItem'});
+            const {pvd_id, itn_id } = request.body;
+            const sql = 'INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (?, ?, ?);';
+            const values= [pvd_id, itn_id ];
+            const confirmacao =  await db.query (sql,values);
+            const pvi_id= confirmacao [0].insertId;
+            return response.status(200).json(
+                {
+                    confirma: 'Sucesso',
+                    message: 'Cadastrar PontosVendaItem',
+                    pvi_id
+                }
+                );
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }

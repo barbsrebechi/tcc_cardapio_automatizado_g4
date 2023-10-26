@@ -30,8 +30,9 @@ module.exports = {
             return response.status(200).json(
                 {
                     confirma:'Sucesso', 
-                    message: 'Cadastrar PontosVenda'
+                    message: 'Cadastrar PontosVenda',
                     pontoVenda_id
+                    
                 }
                 );
         } catch (error) {
