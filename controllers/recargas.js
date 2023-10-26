@@ -11,9 +11,8 @@ module.exports = {
                 {
                     confirma: 'Sucesso',
                     message: 'Recargas cadastradas',
-                    rec_id
-                    //nItens: nReg,
-                   // itens: recargas[0]
+                    nItens: nReg,
+                    itens: recargas[0]
                 }
             );
         } catch (error) {
@@ -23,7 +22,18 @@ module.exports = {
 
     async cadatrarRecargas(request, response) {
         try {
-            return response.status(200).json({ confirma: 'Cadastrar Recargas' });
+             const  {usu_id, rec_descricao, rec_valor, rec_data, ped_id } = resquest.body;
+             const sql = 'INSERT INTO RECARGAS  (usu_id, rec_descricao, rec_valor, rec_data, ped_id) VALUES (?, ?, ?, ?, ?);';
+             const values = [usu_id, rec_descricao, rec_valor, rec_data, ped_id];
+             const confirmacao = await db.query(sql, values);
+             const rec_id = confirmacao[0].insertId;
+             
+            return response.status(200).json(
+                { confirma: 'Sucesso',
+                message:'Cadastro de recargas efeituado',
+                rec_id
+                
+            });
         } catch (error) {
             return response.status(500).json({ confirma: 'Erro', message: error });
         }
