@@ -6,14 +6,16 @@ module.exports = {
     async listarUsuarios(request, response) {
         try {
             const sql = 'SELECT usu_id, usu_nome, usu_cpf, usu_cod_cartao FROM USUARIOS;';
+           
             const usuarios = await db.query(sql);
             
             const nReg = usuarios[0].length;
+          
             return response.status(200).json({ 
                 confirma: 'Sucesso', 
                 menssage: 'Usuario cadastrado',
-                'nItens': nReg, 
-                'itens': usuarios[0] 
+                nItens: nReg, 
+                 itens: usuarios[0] 
             });
 
         } catch (error) {
@@ -32,8 +34,10 @@ module.exports = {
             return response.status(200).json({ 
                 confirma: 'Sucesso',
                 menssage: 'Cadastro de Usuário efetuado.',
-                usu_id
-           });
+                usu_id 
+           }
+           
+        );
 
         } catch (error) {
             return response.status(500).json({ confirma: 'Erro', message: error });
@@ -43,7 +47,12 @@ module.exports = {
 
     async editarUsuarios(request, response) {
         try {
+            const {usu_nome, usu_cpf, usu_cod_cartao, usu_dt_cadastro, usu_dt_cartao, usu_vip} = request.body;
+            const {usu_id} = request.params;
+            const sql = 'UPDATE  USUARIOS SET usu_nome = ?, usu_cpf= ?, usu_cod_cartao = ?, usu_dt_cadastro = ?, usu_dt_cartao = ?, usu_vip = ? WHERE usu_id = ?;';
+          
             return response.status(200).json({ confirma: 'EditarUsuarios' });
+
         } catch (error) {
             return response.status(500).json({ confirma: 'Erro', message: error });
         }
