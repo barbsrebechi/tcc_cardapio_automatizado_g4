@@ -26,12 +26,12 @@ module.exports = {
             const sql = 'INSERT INTO PONTOS_VENDA (pvd_nome, pvd_descricao, pvd_foto ) VALUES (?, ?,?);';
             const values= [ pvd_nome, pvd_descricao, pvd_foto];
             const confirmacao =  await db.query (sql,values);
-            const pv_id= confirmacao [0].insertId;
+            const pvd_id= confirmacao [0].insertId;
             return response.status(200).json(
                 {
                     confirma:'Sucesso', 
                     message: 'Cadastro de Pontos de Venda efetuado',
-                    pv_id
+                    pvd_id
                     
                 }
                 );
@@ -43,15 +43,15 @@ module.exports = {
 
     async editarPontosVenda(request, response) {
         try {
-            const {pvd_nome, pvd_descricao, pvd_foto}=request.body;
-            const{pv_id}=request.params;
-            const sql= 'UPDATE PONTOS_VENDA SET pvd_nome = ?, pvd_descricao = ?, pvd_foto = ? WHERE pv_id = ?';
-            const values= [pvd_nome, pvd_descricao, pvd_foto, pv_id];
+            const {pvd_nome, pvd_descricao, pvd_foto} = request.body;
+            const{pvd_id} = request.params;
+            const sql= 'UPDATE PONTOS_VENDA SET pvd_nome = ?, pvd_descricao = ?, pvd_foto = ? WHERE pvd_id = ?';
+            const values= [pvd_nome, pvd_descricao, pvd_foto, pvd_id];
             const atualizacao = await db.query (sql, values);
             return response.status(200).json(
                 {
                     confirma: 'Sucesso',
-                    message: 'Usuários' + pv_id + "atualizado com sucesso!",
+                    message: 'Usuários' + pvd_id + "atualizado com sucesso!",
                     registrosAtualizados: atualizacao[0].affectedRows
                 }
                 );
@@ -62,14 +62,14 @@ module.exports = {
   
     async apagarPontosVenda(request, response) {
         try {
-            const {pv_id}= request.params;
-            const sql = 'DELETE FROM PONTO_VENDA WHERE pv_id = ? ;';
-            const values = [pv_id];
+            const {pvd_id}= request.params;
+            const sql = 'DELETE FROM PONTO_VENDA WHERE pvd_id = ? ;';
+            const values = [pvd_id];
             await db.query (sql, values);
             return response.status(200).json(
                 {
                     confirma: 'Sucesso',
-                    message: 'Usuário com id' + pv_id + 'excluído com sucesso'
+                    message: 'Usuário com id' + pvd_id + 'excluído com sucesso'
                 }
             );
         } catch (error) {
