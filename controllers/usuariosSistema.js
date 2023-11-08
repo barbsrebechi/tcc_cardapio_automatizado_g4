@@ -20,6 +20,8 @@ module.exports = {
   
     async cadatrarUsuariosSistema(request, response) {
         try {
+            const {us_tipo, us_nome, us_login, us_senha} = request.body;
+            const sql= 'INSERT INTO USUARIO_SISTEMA (us_tipo, us_nome, us_login, us_senha) VALUES (?,?,?,?);';
             return response.status(200).json({confirma: 'Cadastrar UsuariosSistema'});
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
