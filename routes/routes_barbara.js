@@ -15,7 +15,7 @@ const UsuariosSistemaController = require('../controllers/usuariosSistema');
 //definição das rotas 
 router.get('/itens', ItensController.listarItens);
 router.post('/itens', ItensController.cadatrarItens);
-router.patch('/itens', ItensController.editarItens);
+router.patch('/itens:itn_id', ItensController.editarItens);
 router.delete('/itens', ItensController.apagarItens);
 
 //definição das rotas 

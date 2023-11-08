@@ -1,5 +1,5 @@
 CREATE TABLE `ITENS` (
-	`itn_id` INT NOT NULL,
+	`itn_id` INT NOT NULL AUTO_INCREMENT,
 	`itn_nome_item` varchar(64) NOT NULL,
 	`itn_descricao` varchar(256) NOT NULL,
 	`itn_imagem` varchar(512) NOT NULL,
