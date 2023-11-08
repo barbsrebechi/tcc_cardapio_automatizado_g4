@@ -40,7 +40,7 @@ module.exports = {
         );
 
         } catch (error) {
-            return response.status(500).json({ confirma: 'Erro', message: error });
+            return response.status(500).json({ confirma: 'Erro e', message: error });
         }
     },
 
@@ -50,7 +50,8 @@ module.exports = {
             const {usu_nome, usu_cpf, usu_cod_cartao, usu_dt_cadastro, usu_dt_cartao, usu_vip} = request.body;
             const {usu_id} = request.params;
             const sql = 'UPDATE  USUARIOS SET usu_nome = ?, usu_cpf= ?, usu_cod_cartao = ?, usu_dt_cadastro = ?, usu_dt_cartao = ?, usu_vip = ? WHERE usu_id = ?;';
-          
+            const values = [ usu_nome, usu_cpf, usu_cod_cartao, usu_dt_cadastro, usu_dt_cartao, usu_vip];
+           
             return response.status(200).json({ confirma: 'EditarUsuarios' });
 
         } catch (error) {
