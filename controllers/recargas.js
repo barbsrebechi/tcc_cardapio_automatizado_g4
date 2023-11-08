@@ -22,8 +22,8 @@ module.exports = {
 
     async cadastrarRecargas(request, response) {
         try {
-             const  {usu_id, rec_descricao, rec_valor, rec_data, ped_id } = resquest.body;
-             const sql = 'INSERT INTO RECARGAS  (usu_id, rec_descricao, rec_valor, rec_data, ped_id) VALUES (?, ?, ?, ?, ?);';
+             const  {usu_id, rec_descricao, rec_valor, rec_data, ped_id} = request.body;
+             const sql = 'INSERT INTO RECARGAS (usu_id, rec_descricao, rec_valor, rec_data, ped_id) VALUES (?, ?, ?, ?, ?);';
              const values = [usu_id, rec_descricao, rec_valor, rec_data, ped_id];
              const confirmacao = await db.query(sql, values);
              const rec_id = confirmacao[0].insertId;
@@ -43,10 +43,10 @@ module.exports = {
 
     async editarRecargas(request, response) {
         try {
-            const {usu_id, rec_descricao, rec_valor, rec_data, ped_id } = resquest.body;
+            const {usu_id, rec_descricao, rec_valor, rec_data, ped_id } = request.body;
             const { req_id } = request.params;
-            const sql = 'UPDATE RECARGAS SET usu_id = ?, rec_descricao = ?, rec_valor = ?, rec_data = ?, ped_id = ? WHERE req_id = ?;';
-            const values = [ usu_id, rec_descricao, rec_valor, rec_data, ped_id];
+            const sql = 'UPDATE RECARGAS SET usu_id = ?, rec_descricao = ?, rec_valor = ?, rec_data = ?, ped_id = ? WHERE rec_id = ?;';
+            const values = [ usu_id, rec_descricao, rec_valor, rec_data, ped_id, req_id];
             const atualizacao = await db.query(sql, values);
             return response.status(200).json(
                 { 

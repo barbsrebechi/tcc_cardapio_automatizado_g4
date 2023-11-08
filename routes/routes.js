@@ -45,9 +45,9 @@ router.delete('/pontoVendaItem', PontosVendaItemController.apagarPontosVendaItem
 
 //definição das rotas 
 router.get('/recargas', RecargasController.listarRecargas);
-router.post('/recargas', RecargasController.cadatrarRecargas);
-router.patch('/recargas', RecargasController.editarRecargas);
-router.delete('/recargas', RecargasController.apagarRecargas);
+router.post('/recargas', RecargasController.cadastrarRecargas);
+router.patch('/recargas/:req_id', RecargasController.editarRecargas);
+router.delete('/recargas/:req_id', RecargasController.apagarRecargas);
 
 //definição das rotas 
 router.get('/usuarios', UsuariosController.listarUsuarios);
