@@ -20,7 +20,7 @@ module.exports = {
         }
     },
 
-    async cadatrarRecargas(request, response) {
+    async cadastrarRecargas(request, response) {
         try {
              const  {usu_id, rec_descricao, rec_valor, rec_data, ped_id } = resquest.body;
              const sql = 'INSERT INTO RECARGAS  (usu_id, rec_descricao, rec_valor, rec_data, ped_id) VALUES (?, ?, ?, ?, ?);';
@@ -37,22 +37,46 @@ module.exports = {
         } catch (error) {
             return response.status(500).json({ confirma: 'Erro', message: error });
         }
+        //16,17 TESTAR
     },
 
 
     async editarRecargas(request, response) {
         try {
-            return response.status(200).json({ confirma: 'EditarRecargas' });
-        } catch (error) {
+            const {usu_id, rec_descricao, rec_valor, rec_data, ped_id } = resquest.body;
+            const { req_id } = request.params;
+            const sql = 'UPDATE RECARGAS SET usu_id = ?, rec_descricao = ?, rec_valor = ?, rec_data = ?, ped_id = ? WHERE req_id = ?;';
+            const values = [ usu_id, rec_descricao, rec_valor, rec_data, ped_id];
+            const atualizacao = await db.query(sql, values);
+            return response.status(200).json(
+                { 
+                    confirma: 'Sucesso',
+                    message: 'Recarga' + req_id + "atualizado com sucesso",
+                    registrosAtualizados: atualizacao[0].affectedRows
+
+            }
+            );
+            //slide20,21,22,23 TESTAR
+            } catch (error) {
             return response.status(500).json({ confirma: 'Erro', message: error });
         }
     },
 
     async apagarRecargas(request, response) {
         try {
-            return response.status(200).json({ confirma: 'Apagar Recargas' });
+            const { req_id } = request.params;
+            const sql = 'DELTE FROM RECARGAS WHERE req_id = ?';
+            const values = [usu_id];
+            await db.query(sql, values);
+            return response.status(200).json(
+                { 
+                    confirma: 'Sucesso',
+                    message: 'Recarga com id' + req_id + 'excluído com sucesso'
+                  }
+            );
         } catch (error) {
             return response.status(500).json({ confirma: 'Erro', message: error });
         }
+        //testar 26,27,28
     },
 };  
