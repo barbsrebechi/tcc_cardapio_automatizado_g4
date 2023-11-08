@@ -6,8 +6,14 @@ module.exports = {
         try {
             const sql = 'SELECT ped_id, usu_id, ped_dt_hr_pedido, ped_status, ped_observacoes FROM PEDIDOS;';
             const pedidos = await db.query(sql);
+            const nReg = pedidos[0].lenght;
 
-            return response.status(200).json({confirma: pedidos[0]});
+            return response.status(200).json({
+                confirma: 'Sucesso',
+                message: 'Pedido Cadastrado',
+                nItens:nReg,
+                itens:pedidos[0]});
+
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
