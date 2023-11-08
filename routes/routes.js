@@ -33,8 +33,8 @@ router.delete('/pedidosItens', PedidosItensController.apagarPedidosItens);
 //definição das rotas 
 router.get('/pontosVenda', PontosVendaController.listarPontosVenda);
 router.post('/pontosVenda', PontosVendaController.cadatrarPontosVenda);
-router.patch('/pontosVenda', PontosVendaController.editarPontosVenda);
-router.delete('/pontosVenda', PontosVendaController.apagarPontosVenda);
+router.patch('/pontosVenda/:pvd_id', PontosVendaController.editarPontosVenda);
+router.delete('/pontosVenda/:pvd_id', PontosVendaController.apagarPontosVenda);
 
 
 //definição das rotas 
