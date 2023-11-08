@@ -5,7 +5,7 @@ module.exports = {
     async listarItens(request, response) {
         try {
             //Armazena instruções SQL na constante
-            const sql = 'SELECT itn_id, itn_nome_item, itn_descricao, itn_imagem  FROM ITENS;';
+            const sql = 'SELECT itn_id, itn_nome_item, itn_descricao, itn_imagem = 1 as itn_id  FROM ITENS;';
             // executa instruções SQL e armazena o resultado na variavél itens
             const itens = await db.query(sql);
             //armazena na constante o número de registro que a instrução SELECT retornou
