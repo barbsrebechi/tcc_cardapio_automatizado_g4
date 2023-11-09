@@ -27,8 +27,8 @@ router.delete('/pedidos',PedidosController.apagarPedidos);
 //definição das rotas 
 router.get('/pedidosItens', PedidosItensController.listarPedidosItens);
 router.post('/pedidosItens', PedidosItensController.cadatrarPedidosItens);
-router.patch('/pedidosItens', PedidosItensController.editarPedidosItens);
-router.delete('/pedidosItens', PedidosItensController.apagarPedidosItens);
+router.patch('/pedidosItens/:pi_id', PedidosItensController.editarPedidosItens);
+router.delete('/pedidosItens/:pi_id', PedidosItensController.apagarPedidosItens);
 
 //definição das rotas 
 router.get('/pontosVenda', PontosVendaController.listarPontosVenda);
