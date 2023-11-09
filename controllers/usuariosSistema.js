@@ -23,7 +23,7 @@ module.exports = {
             const {us_tipo, us_nome, us_login, us_senha} = request.body;
             const sql= 'INSERT INTO USUARIOS_SISTEMA (us_tipo, us_nome, us_login, us_senha) VALUES (?,?,?,?);';
             const values = [us_tipo, us_nome, us_login, us_senha];
-            const confirmacao = await db.query(sql,values);
+            const confirmacao = await db.query(sql, values);
             const us_id = confirmacao[0].insertId;
 
             return response.status(200).json({
@@ -50,7 +50,7 @@ module.exports = {
         {
         confirma: 'Sucesso',
         message: 'Usuarios Sistema' + usu_id + " atualizando com sucesso!",
-        regsitrosAtualizados:[0].affectedRows
+        regsitrosAtualizados : atualizacao[0].affectedRows
     });
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});

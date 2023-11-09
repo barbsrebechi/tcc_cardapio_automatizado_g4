@@ -4,7 +4,7 @@
   "description": "TCC para o Eco Thermas, na criação de um ca´rdpio automatizado para faciclitar os pedidos.",
   "main": "index.js",
   "scripts": {
-    "start":"node index.js",
+    "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,7 +31,6 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "mysql2": "^3.6.0"
-   
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
