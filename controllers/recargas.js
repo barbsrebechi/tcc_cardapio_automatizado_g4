@@ -18,6 +18,7 @@ module.exports = {
         } catch (error) {
             return response.status(500).json({ confirma: 'Erro', message: error });
         }
+        //FUNCIONANDO 
     },
 
     async cadastrarRecargas(request, response) {
@@ -37,7 +38,7 @@ module.exports = {
         } catch (error) {
             return response.status(500).json({ confirma: 'Erro', message: error });
         }
-        //16,17 TESTAR
+        //FUNCIONANDO
     },
 
 
