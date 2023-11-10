@@ -91,24 +91,5 @@ module.exports = {
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
-    }, 
-    async ocultarItens (request, response) {
-        try {
-            //parâmetros recebidos pelo corpo da requisição
-            const itn_ativo = false;
-            const {itn_id} = request.parms;
-            const sql = 'UPDATE itens WHERE itn_id = ? ;';
-            const values = [itn_ativo,itn_id];
-            const atualizacao = await db.query(sql, values);
-            return response.status(200).json (
-                {
-                    confirma:'Sucesso',
-                    message:'Item' + itn_id + "Excluido com sucesso!",
-                    registrosAtualizados: atualizacao[0].affectedRows
-                }
-            );
-        } catch (error) {
-            return response.status(500).json({confirma: 'Erro', message: error});
-        }
     }
-};  
+};   

@@ -17,13 +17,12 @@ router.get('/itens', ItensController.listarItens);
 router.post('/itens', ItensController.cadatrarItens);
 router.patch('/itens/:itn_id', ItensController.editarItens);
 router.delete('/itens/:itn_id', ItensController.apagarItens);
-router.patch('/itens/del/:itn_id', ItensController.ocultarItens);
 
 //definição das rotas 
 router.get('/pedidos',PedidosController.listarPedidos);
 router.post('/pedidos',PedidosController.cadatrarPedidos);
-router.patch('/pedidos',PedidosController.editarPedidos);
-router.delete('/pedidos',PedidosController.apagarPedidos);
+router.patch('/pedidos/:ped_id',PedidosController.editarPedidos);
+router.delete('/pedidos/:ped_id',PedidosController.apagarPedidos);
 
 //definição das rotas 
 router.get('/pedidosItens', PedidosItensController.listarPedidosItens);
