@@ -57,7 +57,6 @@ module.exports = {
 
             }
             );
-            //slide20,21,22,23 TESTAR
             } catch (error) {
             return response.status(500).json({ confirma: 'Erro', message: error });
         }
@@ -65,14 +64,14 @@ module.exports = {
 
     async apagarRecargas(request, response) {
         try {
-            const { req_id } = request.params;
-            const sql = 'DELTE FROM RECARGAS WHERE req_id = ?';
-            const values = [usu_id];
+            const { rec_id } = request.params;
+            const sql = 'DELTE FROM RECARGAS WHERE rec_id = ?';
+            const values = [rec_id];
             await db.query(sql, values);
             return response.status(200).json(
                 { 
                     confirma: 'Sucesso',
-                    message: 'Recarga com id' + req_id + 'excluído com sucesso'
+                    message: 'Recarga com id' + rec_id + 'excluído com sucesso'
                   }
             );
         } catch (error) {
