@@ -2,20 +2,19 @@ const { json } = require('express');
 const db = require('../database/connection'); 
 
 module.exports = {
-    async listarPedidosItens(request, response) {
+   async listarPedidosItens(request, response) {
         try {
-const sql= 'SELECT pdit_id, ped_id, itn_id pdit_qtd, pdit_vlr_unit FROM PEDIDO_ITENS;';
 
-const PedidosItens = await db.query(sql);
- 
-const nReg = usuarios [0].length;
+            const sql = 'SELECT pdit_id, ped_id, itn_id pdit_qtd, pdit_vlr_unit FROM PEDIDO_ITENS;'; 
+            const PedidosItens = await db.query(sql);
+            const nReg = PedidosItens[0].length;
 
             return response.status(200).json(
                 {
-                    confirma: 'Sucesso',
-                    message: 'Usuários cadastrados',
+                    confirma: 'Sucesso', 
+                    message: 'Usúarios cadastrados',
                     nItens: nReg,
-                    itens: PedidosItens [0]
+                    itens: PedidosItens[0]
                 }
                 );
         } catch (error) {
@@ -25,7 +24,17 @@ const nReg = usuarios [0].length;
   
     async cadatrarPedidosItens(request, response) {
         try {
-            return response.status(200).json({confirma: 'Cadastrar PedidosItens'});
+            const {pdit_id, ped_id, itn_id, pdit_qtd, pdit_vlr_unit} = request.body;
+            const sql = 'INSERT INTO PEDIDO_ITENS (pdit_id, ped_id, itn_id, pdit_qtd, pdit_vlr_unit) VALUES (?, ?, ?, ?, ? );';
+            const values = [pdit_id, ped_id, itn_id, pdit_qtd, pdit_vlr_unit];
+            const confirmacao = await db.query(sql, values);
+            const pd_id = confirmacao[0].insertId;
+            return response.status(200).json(
+                {
+                    confirma:'Sucesso',
+                    message:'Cadastrar PedidosItens',
+                    pd_id
+                });
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
