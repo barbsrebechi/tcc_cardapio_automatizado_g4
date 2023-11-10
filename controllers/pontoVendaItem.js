@@ -62,12 +62,16 @@ module.exports = {
         try {
             const { pvi_id } = request.params;
             const sql = 'DELETE FROM PONTO_VENDA_ITENS WHERE pvi_id = ?;';
-            const resultado = await db.query(sql, [pvi_id]);
-            if (resultado.affectedRows > 0) {
-                return response.status(200).json({ confirma: 'Sucesso', message: 'Usuário apagado com sucesso!' });
-            } else {
-                return response.status(404).json({ confirma: 'Erro', message: 'Usuário não encontrado' });
-            }
+            const values = [pvi_id];
+            await db.query(sql,values);
+            return response.status(200).json(
+
+                { 
+                    confirma: 'Sucesso', 
+                    message: 'Ponto venda item' + pvi_id + 'excluido com sucesso'
+                }
+            );
+            
         } catch (error) {
             return response.status(500).json({ confirma: 'Erro', message: error });
         }
