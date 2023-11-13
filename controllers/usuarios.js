@@ -71,7 +71,7 @@ module.exports = {
             await db.query(sql,values);
             return response.status(200).json({ 
                 confirma:'Sucesso',
-                message: 'Usuário com id' + usu_id + 'excluindo com sucesso'
+                message: 'Usuário com id' + usu_id  + 'excluindo com sucesso'
          }
          );
         } catch (error) {
