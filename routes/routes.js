@@ -52,8 +52,8 @@ router.delete('/recargas', RecargasController.apagarRecargas);
 //definição das rotas 
 router.get('/usuarios', UsuariosController.listarUsuarios);
 router.post('/usuarios', UsuariosController.cadatrarUsuarios);
-router.patch('/usuarios', UsuariosController.editarUsuarios);
-router.delete('/usuarios', UsuariosController.apagarUsuarios);
+router.patch('/usuarios/:usu_id', UsuariosController.editarUsuarios);
+router.delete('/usuarios/:usu_id', UsuariosController.apagarUsuarios);
 
 //definição das rotas 
 router.get('/usuariosSistema', UsuariosSistemaController.listarUsuariosSistema);

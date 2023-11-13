@@ -69,7 +69,11 @@ module.exports = {
             const sql = 'DELETE FROM USUARIOS WHERE usu_id = ?';
             const values = [usu_id];
             await db.query(sql,values);
-            return response.status(200).json({ confirma: 'Apagar Usuarios' });
+            return response.status(200).json({ 
+                confirma:'Sucesso',
+                message: 'Usuário com id' + usu_id + 'excluindo com sucesso'
+         }
+         );
         } catch (error) {
             return response.status(500).json({ confirma: 'Erro', message: error });
         }
