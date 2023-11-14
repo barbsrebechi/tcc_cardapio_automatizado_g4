@@ -54,7 +54,7 @@ module.exports = {
            const atualizacao = await db.query(sql, values);
             return response.status(200).json({ 
                 confirma: 'sucesso',
-                message:'Usuario com id' + usu_id + "atualizado com sucesso!",
+                message:'Usuario com id ' + usu_id + "atualizado com sucesso!",
                 registroAtualizzados: atualizacao[0].affectedRows 
             });
 
@@ -71,7 +71,7 @@ module.exports = {
             await db.query(sql,values);
             return response.status(200).json({ 
                 confirma:'Sucesso',
-                message: 'Usuário com id' + usu_id  + 'excluindo com sucesso'
+                message: 'Usuário com id ' + usu_id  + 'excluindo com sucesso'
          }
          );
         } catch (error) {
