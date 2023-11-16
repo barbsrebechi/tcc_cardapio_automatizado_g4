@@ -24,7 +24,7 @@ module.exports = {
     async cadatrarPontosVendaItem(request, response) {
         try {
             const { pvd_id, itn_id, pvd_preco_item } = request.body;
-            const sql = 'INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (?, ?,?);';
+            const sql = 'INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (?,?,?);';
             const values = [pvd_id, itn_id, pvd_preco_item];
             const confirmacao = await db.query(sql, values);
             const pvi_id = confirmacao[0].insertId;
@@ -45,7 +45,7 @@ module.exports = {
         try {
             const { pvd_id, itn_id, pvd_preco_item } = request.body;
             const { pvi_id } = request.params;
-            const sql = 'UPDATE PONTO_VENDA_ITENS SET pvd_id=?, itn_id=?, pvd_preco_item=? WHERE pvi_id = ?;';
+            const sql = 'UPDATE PONTO_VENDA_ITENS SET pvd_id = ?, itn_id = ?, pvd_preco_item = ? WHERE pvi_id = ?;';
             const values = [pvd_id, itn_id, pvd_preco_item, pvi_id];
             const atualizacao = await db.query(sql, values);
             return response.status(200).json({
