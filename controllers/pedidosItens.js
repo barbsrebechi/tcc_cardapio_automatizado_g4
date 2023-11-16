@@ -8,9 +8,9 @@ module.exports = {
 
             const sql = 'SELECT pdit_id, ped_id, itn_id, pdit_qtd, pdit_vlr_unit FROM PEDIDO_ITENS;'; 
 
-            const PedidosItens = await db.query(sql);
+            const pedidosItens = await db.query(sql);
 
-            const nReg = PedidosItens [0].length;
+            const nReg = pedidosItens [0].length;
 
             return response.status(200).json 
             (
@@ -18,7 +18,7 @@ module.exports = {
                 confirma: 'Sucesso',
                 message: 'Usuários cadastrados',
                 nItens: nReg,
-                itens: PedidosItens[0]
+                itens: pedidosItens[0]
             }
             );
         } catch (error) {
@@ -28,16 +28,16 @@ module.exports = {
   
     async cadatrarPedidosItens(request, response) {
         try {
-            const {pdit_id, ped_id, itn_id, pdit_qtd, pdit_vlr_unit} =request.body;
-            const sql= "INSERT INTO PEDIDO_ITENS (pdit_id, ped_id, itn_id, pdit_qtd, pdit_vlr_unit) VALUES (?, ?, ?, ?, ? );";
-            const values= [pdit_id, ped_id, itn_id, pdit_qtd, pdit_vlr_unit];
+            const { ped_id, itn_id, pdit_qtd, pdit_vlr_unit} =request.body;
+            const sql= "INSERT INTO PEDIDO_ITENS ( ped_id, itn_id, pdit_qtd, pdit_vlr_unit) VALUES (?, ?, ?, ?);";
+            const values= [ ped_id, itn_id, pdit_qtd, pdit_vlr_unit];
             const confirmacao = await db.query(sql, values);
-            const pi_id= confirmacao[0].insertId;
+            const pdit_id= confirmacao[0].insertId;
             return response.status(200).json(
                 {
                     confirma: 'Sucesso',
                     message: 'Cadastro de pedido item efetuado',
-                    pi_id 
+                    pdit_id 
                 }
                 );
         } catch (error) {
