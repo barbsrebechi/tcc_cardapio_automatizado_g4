@@ -28,22 +28,29 @@ module.exports = {
   
     async cadatrarPedidosItens(request, response) {
         try {
-            const { ped_id, itn_id, pdit_qtd, pdit_vlr_unit} =request.body;
-            const sql= "INSERT INTO PEDIDO_ITENS ( ped_id, itn_id, pdit_qtd, pdit_vlr_unit) VALUES (?, ?, ?, ?);";
-            const values= [ ped_id, itn_id, pdit_qtd, pdit_vlr_unit];
-            const confirmacao = await db.query(sql, values);
-            const pdit_id= confirmacao[0].insertId;
+            //parâmetros recebidos pelo corpo da requisição
+            const {  ped_id, itn_id, pdit_qtd, pdit_vlr_unit} = request.body;
+            //instrução SQL pra inserção do registro
+            const sql = 'INSERT INTO pedidos ( ped_id, itn_id, pdit_qtd, pdit_vlr_unit) VALUES (?,?,?,?);';
+            //preparo do array com dados que serão utilizdos
+            const values  = [ ped_id, itn_id, pdit_qtd, pdit_vlr_unit];
+            //execução e obtenção de confirmação da atualização realizada
+            const confirmacao = await db.query(sql, values );
+            //identificação do id do registro inserido
+            const pdit_id = confirmacao[0].insertId;
+            //responde a requisição com a mensagem confirmando o ID do registro inserido
+
             return response.status(200).json(
-                {
-                    confirma: 'Sucesso',
-                    message: 'Cadastro de pedido item efetuado',
-                    pdit_id 
+                { confirma: 'Sucesso',
+                  message:'Cadastro de pedidos efetuado',
+                  pdit_id
                 }
                 );
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
     }, 
+
 
 
     async editarPedidosItens(request, response) {
