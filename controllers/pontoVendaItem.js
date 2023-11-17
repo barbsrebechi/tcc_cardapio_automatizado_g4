@@ -45,7 +45,7 @@ module.exports = {
         try {
             const { pvd_id, itn_id, pvd_preco_item } = request.body;
             const { pvi_id } = request.params;
-            const sql = 'UPDATE PONTO_VENDA_ITENS SET pvd_id = ?, itn_id = ?, pvd_preco_item = ? WHERE pvi_id = ?;';
+            const sql = 'UPDATE PONTO_VENDA_ITENS SET pvd_id = ?, itn_id = ?, pvd_preco_item = ? WHERE pvd_id = ? and int_id = ?;';
             const values = [pvd_id, itn_id, pvd_preco_item, pvi_id];
             const atualizacao = await db.query(sql, values);
             return response.status(200).json({
