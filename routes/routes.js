@@ -59,7 +59,7 @@ router.delete('/usuarios/:usu_id', UsuariosController.apagarUsuarios);
 router.get('/usuariosSistema', UsuariosSistemaController.listarUsuariosSistema);
 router.post('/usuariosSistema', UsuariosSistemaController.cadatrarUsuariosSistema);
 router.patch('/usuariosSistema/:us_id', UsuariosSistemaController.editarUsuariosSistema);
-router.delete('/usuariosSistema', UsuariosSistemaController.apagarUsuariosSistema);
+router.delete('/usuariosSistema/:us_id', UsuariosSistemaController.apagarUsuariosSistema);
 
 module.exports = router;
 
