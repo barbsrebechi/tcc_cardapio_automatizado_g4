@@ -65,7 +65,7 @@ module.exports = {
     async apagarRecargas(request, response) {
         try {
             const { rec_id } = request.params;
-            const sql = 'DELTE FROM RECARGAS WHERE rec_id = ?';
+            const sql = 'DELETE FROM RECARGAS WHERE rec_id = ?';
             const values = [rec_id];
             await db.query(sql, values);
             return response.status(200).json(
