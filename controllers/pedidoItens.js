@@ -53,7 +53,7 @@ module.exports = {
             //parâmetro recebido pela URL via params ( valor direto na url ex: /itens/1)
             const {pdit_id} = request.params;
             //instrução SQL para a atualização dos valores
-            const sql = 'UPDATE pedidoItens SET ped_id = ?, itn_id = ?, pdit_qtd = ?, pdit_vlr_unit = ? WHERE pdit_id = ?';
+            const sql = 'UPDATE PEDIDO_ITENS SET ped_id = ?, itn_id = ?, pdit_qtd = ?, pdit_vlr_unit = ? WHERE pdit_id = ?';
             //preparo do array com dados que serão atualizados
             const values = [ped_id, itn_id, pdit_qtd, pdit_vlr_unit];
             //execução e obtenção de confirmação da atualização realizada
