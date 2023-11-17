@@ -58,7 +58,7 @@ router.delete('/usuarios/:usu_id', UsuariosController.apagarUsuarios);
 //definição das rotas 
 router.get('/usuariosSistema', UsuariosSistemaController.listarUsuariosSistema);
 router.post('/usuariosSistema', UsuariosSistemaController.cadatrarUsuariosSistema);
-router.patch('/usuariosSistema', UsuariosSistemaController.editarUsuariosSistema);
+router.patch('/usuariosSistema/:us_id', UsuariosSistemaController.editarUsuariosSistema);
 router.delete('/usuariosSistema', UsuariosSistemaController.apagarUsuariosSistema);
 
 module.exports = router;

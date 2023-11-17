@@ -29,7 +29,7 @@ module.exports = {
             const sql = 'INSERT INTO USUARIOS ( usu_nome, usu_cpf, usu_cod_cartao, usu_dt_cadastro, usu_dt_cartao, usu_vip) VALUES (?,?,?,?,?,?);';
             const values = [usu_nome, usu_cpf, usu_cod_cartao, usu_dt_cadastro, usu_dt_cartao, usu_vip];
             const confirmacao = await db.query(sql, values);
-            const usu_id = confirmacao[0].insertld;
+            const usu_id = confirmacao[0].insertId;
 
             return response.status(200).json({ 
                 confirma: 'Sucesso',
@@ -54,7 +54,7 @@ module.exports = {
            const atualizacao = await db.query(sql, values);
             return response.status(200).json({ 
                 confirma: 'sucesso',
-                message:'Usuario' + "atualizado com sucesso!",
+                message:'Usuario com id' + usu_id + "atualizado com sucesso!",
                 registroAtualizzados: atualizacao[0].affectedRows 
             });
 
@@ -72,7 +72,8 @@ module.exports = {
             return response.status(200).json({ 
                 confirma: 'Sucesso',
                 message: 'Usuário com id' + usu_id + 'excluído com sucesso'
-             });
+             }); 
+            
         } catch (error) {
             return response.status(500).json({ confirma: 'Erro', message: error });
         }
