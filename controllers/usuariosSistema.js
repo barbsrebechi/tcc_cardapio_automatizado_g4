@@ -64,7 +64,7 @@ module.exports = {
             const values = [us_id];
             await db.query(sql, values);
             return response.status(200).json({
-                confirma: 'usuarios ' + us_id + 'excluido  com sucesso'});
+                confirma: 'usuarios ' + us_id + ' excluido  com sucesso'});
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
