@@ -5,7 +5,7 @@ const router = express.Router();
 //referencia a controllers que serão utilizados nas rotas
 const ItensController = require('../controllers/itens');
 const PedidosController = require('../controllers/pedidos');
-const PedidosItensController = require('../controllers/pedidosItens');
+const PedidoItensController = require('../controllers/pedidoItens');
 const PontosVendaController = require('../controllers/pontosVenda');
 const PontosVendaItemController = require('../controllers/pontoVendaItem');
 const RecargasController = require('../controllers/recargas');
@@ -24,11 +24,11 @@ router.post('/pedidos',PedidosController.cadatrarPedidos);
 router.patch('/pedidos',PedidosController.editarPedidos);
 router.delete('/pedidos',PedidosController.apagarPedidos);
 
-//definição das rotas 
-router.get('/pedidosItens', PedidosItensController.listarPedidosItens);
-router.post('/pedidosItens', PedidosItensController.cadatrarPedidosItens);
-router.patch('/pedidosItens/:pi_id', PedidosItensController.editarPedidosItens);
-router.delete('/pedidosItens/:pi_id', PedidosItensController.apagarPedidosItens);
+//definição das rotas pedido
+router.get('/pedidoItens', PedidoItensController.listarPedidoItens);
+router.post('/pedidoItens', PedidoItensController.cadastrarPedidoItens);
+router.patch('/pedidoItens/:pdit_id', PedidoItensController.editarPedidoItens);
+router.delete('/pedidoItens/:pdit_id', PedidoItensController.apagarPedidoItens);
 
 //definição das rotas 
 router.get('/pontosVenda', PontosVendaController.listarPontosVenda);
