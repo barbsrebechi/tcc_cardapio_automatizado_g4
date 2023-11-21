@@ -5,7 +5,7 @@ module.exports = {
     async listarItens(request, response) {
         try {
             //Armazena instruções SQL na constante
-            const sql = 'SELECT itn_id, itn_nome_item, itn_descricao, itn_imagem FROM ITENS WHERE itn_ativo = 1;';
+            const sql = 'SELECT itn_id, itn_nome_item, itn_descricao, itn_imagem FROM ITENS';
             // executa instruções SQL e armazena o resultado na variavél itens
             const itens = await db.query(sql);
             //armazena na constante o número de registro que a instrução SELECT retornou
@@ -23,11 +23,11 @@ module.exports = {
     async cadatrarItens(request, response) {
         try {
             //parâmetros recebidos pelo corpo da requisição
-            const { itn_nome_item, itn_descricao, itn_imagem } = request.body;
+            const {  itn_nome_item, itn_descricao, itn_imagem } = request.body;
             //instrução SQL pra inserção do registro
-            const sql = 'INSERT INTO itens (itn_nome_item, itn_descricao, itn_imagem) VALUES (?,?,?)';
+            const sql = 'INSERT INTO itens ( itn_nome_item, itn_descricao, itn_imagem ) VALUES (?,?,?)';
             //preparo do array com dados que serão utilizdos
-            const values  = [itn_nome_item, itn_descricao, itn_imagem];
+            const values  = [  itn_nome_item, itn_descricao, itn_imagem ];
             //execução e obtenção de confirmação da atualização realizada
             const confirmacao = await db.query(sql, values );
             //identificação do id do registro inserido
@@ -46,6 +46,7 @@ module.exports = {
     }, 
 
 
+
     async editarItens(request, response) {
         try {
              //parâmetros recebidos pelo corpo da requisição
@@ -62,7 +63,7 @@ module.exports = {
 
             return response.status(200).json(
                 {confirma: 'Sucesso',
-                 message:'Item' + itn_id + " atualizado com sucesso!",
+                 message:'Item ' + itn_id + " atualizado com sucesso!",
                  registrosAtualizados: atualizacao[0].affectdRows
             
             }
@@ -86,7 +87,7 @@ module.exports = {
 
             return response.status(200).json(
                 {confirma: 'Sucesso',
-            message:'Usuário com id' + itn_id + 'excluido com sucesso'            }
+            message:'Usuário com id ' + itn_id + ' excluido com sucesso'            }
             );
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});

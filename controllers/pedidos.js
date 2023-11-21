@@ -4,7 +4,7 @@ const db = require('../database/connection');
 module.exports = {
     async listarPedidos(request, response) {
         try {
-            const sql = 'SELECT ped_id, usu_id, ped_dt_hr_pedido, ped_status, ped_observacoesFROM PEDIDOS;';
+            const sql = 'SELECT ped_id, usu_id, ped_dt_hr_pedido, ped_status, ped_observacoes FROM PEDIDOS;';
             const pedidos = await db.query(sql);
             const nReg = pedidos[0].lenght;
 
@@ -24,7 +24,7 @@ module.exports = {
             //parâmetros recebidos pelo corpo da requisição
             const { usu_id, ped_dt_hr_pedido, ped_status, ped_observacoes} = request.body;
             //instrução SQL pra inserção do registro
-            const sql = 'INSERT INTO pedidos (usu_id, ped_dt_hr_pedido, ped_status, ped_observacoes) VALUES (?,?,?)';
+            const sql = 'INSERT INTO pedidos (usu_id, ped_dt_hr_pedido, ped_status, ped_observacoes) VALUES (?,?,?,?)';
             //preparo do array com dados que serão utilizdos
             const values  = [usu_id, ped_dt_hr_pedido, ped_status, ped_observacoes];
             //execução e obtenção de confirmação da atualização realizada
@@ -53,16 +53,16 @@ module.exports = {
             //parâmetro recebido pela URL via params ( valor direto na url ex: /itens/1)
             const {ped_id} = request.params;
             //instrução SQL para a atualização dos valores
-            const sql = 'UPDATE pedidos SET usu_id = ?, ped_dt_hr_pedido = ?, ped_status = ?, ped_status = ? WHERE ped_id = ?';
+            const sql = 'UPDATE pedidos SET usu_id = ?, ped_dt_hr_pedido = ?, ped_status = ?, ped_observacoes = ? WHERE ped_id = ?';
             //preparo do array com dados que serão atualizados
-            const values = [usu_id, ped_dt_hr_pedido, ped_status, ped_observacoes ];
+            const values = [usu_id, ped_dt_hr_pedido, ped_status, ped_observacoes, ped_id ];
             //execução e obtenção de confirmação da atualização realizada
             const atualizacao = await db.query(sql, values);
             // responde a requisição com a mensagem confirmando o numero de registros atualizados
 
            return response.status(200).json(
                {confirma: 'Sucesso',
-                message:'Pedido' + ped_id + " atualizado com sucesso!",
+                message:'Pedido ' + ped_id + " atualizado com sucesso!",
                 registrosAtualizados: atualizacao[0].affectdRows
            
            }
@@ -86,7 +86,7 @@ module.exports = {
 
             return response.status(200).json(
                 {confirma: 'Sucesso',
-            message:'Pedido com id' + ped_id + 'excluido com sucesso'            }
+            message:'Pedido com id ' + ped_id + ' excluido com sucesso'            }
             );
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
