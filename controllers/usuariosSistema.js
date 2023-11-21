@@ -9,7 +9,7 @@ module.exports = {
            const nReg = usuariosSistema[0].length;
             return response.status(200).json({
             confirma: 'Sucesso',
-            menssage: ' Usuário Sistema cadastrados ',
+            menssage: ' Usuário Sistema cadastrados ',      
              'nItens': nReg,
               'itens': usuariosSistema[0]
             });

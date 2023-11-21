@@ -37,7 +37,7 @@ module.exports = {
                 usu_id 
            }
            
-        );
+        );0
 
         } catch (error) {
             return response.status(500).json({ confirma: 'Erro e', message: error });
@@ -97,6 +97,7 @@ module.exports = {
     } catch (error) {
         return response.status(500).json({confirma: 'Erro', message: error});
 
-    },
+    }
+}
  
 };
