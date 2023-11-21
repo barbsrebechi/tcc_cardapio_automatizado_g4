@@ -53,9 +53,9 @@ module.exports = {
             //parâmetro recebido pela URL via params ( valor direto na url ex: /itens/1)
             const {pdit_id} = request.params;
             //instrução SQL para a atualização dos valores
-            const sql = 'UPDATE PEDIDO_ITENS SET ped_id = ?, itn_id = ?, pdit_qtd = ?, pdit_vlr_unit = ? WHERE pdit_id = ?';
+            const sql = 'UPDATE PEDIDO_ITENS SET ped_id = ?, itn_id = ?, pdit_qtd = ?, pdit_vlr_unit = ? WHERE pdit_id = ?;';
             //preparo do array com dados que serão atualizados
-            const values = [ped_id, itn_id, pdit_qtd, pdit_vlr_unit];
+            const values = [ped_id, itn_id, pdit_qtd, pdit_vlr_unit, pdit_id];
             //execução e obtenção de confirmação da atualização realizada
             const atualizacao = await db.query(sql, values);
             // responde a requisição com a mensagem confirmando o numero de registros atualizados
@@ -77,7 +77,7 @@ module.exports = {
             //parâmetro passado via url na chamada da api pelo front-end
             const { pdit_id} = request.params;
             //comando de exclisão
-            const sql= 'DELETE FROM pedidoItens WHERE pdit_id = ?';
+            const sql= 'DELETE FROM PEDIDO_ITENS WHERE pdit_id = ?';
             //definição de array com os parâmetros que receberam os valores do front-end
             const values = [ pdit_id];
             //executa a instrução de exclusão no banco de dados

@@ -16,7 +16,7 @@ CREATE TABLE `PEDIDOS` (
 );
 
 CREATE TABLE `PEDIDO_ITENS` (
-	`pdit_id` INT NOT NULL,
+	`pdit_id` INT NOT NULL AUTO_INCREMENT,
 	`ped_id` INT NOT NULL,
 	`itn_id` INT NOT NULL,
 	`pdit_qtd` INT NOT NULL,
