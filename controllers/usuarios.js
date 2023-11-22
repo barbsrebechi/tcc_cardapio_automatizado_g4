@@ -37,7 +37,7 @@ module.exports = {
                 usu_id 
            }
            
-        );0
+        );
 
         } catch (error) {
             return response.status(500).json({ confirma: 'Erro e', message: error });
@@ -78,26 +78,7 @@ module.exports = {
             return response.status(500).json({ confirma: 'Erro', message: error });
         }
     },
-
- async ocultarUsuarios(request, response) {
-    try{
-        const usu_ativo = false;
-        const {usu_id} = request.params;
-        const sql = 'UPDATE  usuarios SET usu_ativo = ? WHERE usu_id = ?;';
-        const values = [usu_ativo, usu_id];
-        const atualizacao = await db.query(sql,values);
-        return response.status(200).json(
-           {
-            confirma: 'Sucesso',
-            message: 'Usuário ' + usu_id + " excluido com sucesso!",
-            registroAtualizados: atualizacao[0].affectedRows 
-           }
-        );
-
-    } catch (error) {
-        return response.status(500).json({confirma: 'Erro', message: error});
-
-    }
-}
- 
 };
+
+ 
+
