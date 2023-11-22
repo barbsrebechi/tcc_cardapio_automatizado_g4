@@ -43,20 +43,20 @@ INSERT INTO ITENS ( itn_id, itn_nome_item, itn_descricao, itn_imagem ) VALUES ( 
 
 
 -- PONTO_VENDA_ITENS  "TENS DISPONÍVEIS NOS PONTOS DE VENDA"
-INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (1, 1, 30.00);
-INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (1, 2, 14.00);
-INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (1, 3, 25.00);
-INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (2, 4, 12.00);
-INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (2, 5, 8.50);
-INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (2, 6, 11.00);
-INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (3, 7, 8.00);
-INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (3, 8, 12.00);
-INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (3, 9, 20.00);
-INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (4, 10, 22.00);
-INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (4, 11, 8.00);
-INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (4, 12, 7.00);
-INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (1, 12, 9.80);
-INSERT INTO PONTO_VENDA_ITENS (pvd_id, itn_id, pvd_preco_item) VALUES (2, 12, 10.80);
+INSERT INTO PONTO_VENDA_ITENS (pvi_id, pvd_id, itn_id, pvd_preco_item) VALUES (1, 1, 1, 30.00);
+INSERT INTO PONTO_VENDA_ITENS (pvi_id, pvd_id, itn_id, pvd_preco_item) VALUES (2, 1, 2, 14.00);
+INSERT INTO PONTO_VENDA_ITENS (pvi_id, pvd_id, itn_id, pvd_preco_item) VALUES (3, 1, 3, 25.00);
+INSERT INTO PONTO_VENDA_ITENS (pvi_id, pvd_id, itn_id, pvd_preco_item) VALUES (4, 2, 4, 12.00);
+INSERT INTO PONTO_VENDA_ITENS (pvi_id, pvd_id, itn_id, pvd_preco_item) VALUES (5, 2, 5, 8.50);
+INSERT INTO PONTO_VENDA_ITENS (pvi_id, pvd_id, itn_id, pvd_preco_item) VALUES (6, 2, 6, 11.00);
+INSERT INTO PONTO_VENDA_ITENS (pvi_id, pvd_id, itn_id, pvd_preco_item) VALUES (7, 3, 7, 8.00);
+INSERT INTO PONTO_VENDA_ITENS (pvi_id, pvd_id, itn_id, pvd_preco_item) VALUES (8, 3, 8, 12.00);
+INSERT INTO PONTO_VENDA_ITENS (pvi_id, pvd_id, itn_id, pvd_preco_item) VALUES (9, 3, 9, 20.00);
+INSERT INTO PONTO_VENDA_ITENS (pvi_id, pvd_id, itn_id, pvd_preco_item) VALUES (10, 4, 10, 22.00);
+INSERT INTO PONTO_VENDA_ITENS (pvi_id, pvd_id, itn_id, pvd_preco_item) VALUES (11, 4, 11, 8.00);
+INSERT INTO PONTO_VENDA_ITENS (pvi_id, pvd_id, itn_id, pvd_preco_item) VALUES (12, 4, 12, 7.00);
+INSERT INTO PONTO_VENDA_ITENS (pvi_id, pvd_id, itn_id, pvd_preco_item) VALUES (13, 1, 12, 9.80);
+INSERT INTO PONTO_VENDA_ITENS (pvi_id, pvd_id, itn_id, pvd_preco_item) VALUES (14, 2, 12, 10.80);
 
 
 -- RECARGA "ADCIONAR MAIS NA CORREÇÃO" "5"

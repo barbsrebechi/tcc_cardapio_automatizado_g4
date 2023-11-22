@@ -54,10 +54,11 @@ CREATE TABLE `PONTOS_VENDA` (
 );
 
 CREATE TABLE `PONTO_VENDA_ITENS` (
-	`pvd_id` INT NOT NULL AUTO_INCREMENT,
+	`pvi_id` INT NOT NULL AUTO_INCREMENT,
+	`pvd_id` INT NOT NULL ,
 	`itn_id` INT NOT NULL,
 	`pvd_preco_item` DECIMAL(6,2) NOT NULL,
-	PRIMARY KEY (`pvd_id`,`itn_id`)
+	PRIMARY KEY (`pvi_id`)
 );
 
 CREATE TABLE `RECARGAS` (

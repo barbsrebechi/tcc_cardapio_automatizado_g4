@@ -38,10 +38,10 @@ router.delete('/pontosVenda', PontosVendaController.apagarPontosVenda);
 
 
 //definição das rotas 
-router.get('/pontoVendaItem', PontosVendaItemController.listarPontosVendaItem);
-router.post('/pontoVendaItem', PontosVendaItemController.cadatrarPontosVendaItem);
-router.patch('/pontoVendaItem', PontosVendaItemController.editarPontosVendaItem);
-router.delete('/pontoVendaItem', PontosVendaItemController.apagarPontosVendaItem);
+router.get('/pontoVendaItem', PontosVendaItemController.listarPontoVendaItem);
+router.post('/pontoVendaItem', PontosVendaItemController.cadastrarPontosVendaItem);
+router.patch('/pontoVendaItem/:pvi_id', PontosVendaItemController.editarPontosVendaItem);
+router.delete('/pontoVendaItem/:pvi_id', PontosVendaItemController.apagarPontosVendaItem);
 
 //definição das rotas 
 router.get('/recargas', RecargasController.listarRecargas);
