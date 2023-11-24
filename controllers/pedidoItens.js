@@ -62,7 +62,7 @@ module.exports = {
 
            return response.status(200).json(
                {confirma: 'Sucesso',
-                message:'Pedido' + pdit_id + " atualizado com sucesso!",
+                message:'Pedido  ' + pdit_id + "  atualizado com sucesso!",
                 registrosAtualizados: atualizacao[0].affectdRows
            
            }
@@ -86,7 +86,7 @@ module.exports = {
 
             return response.status(200).json(
                 {confirma: 'Sucesso',
-            message:'Pedido com id' + pdit_id + 'excluido com sucesso'            }
+            message:'Pedido com id  ' + pdit_id + '  excluido com sucesso'            }
             );
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
